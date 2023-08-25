@@ -1,0 +1,11 @@
+.pokemon-image-container{
+    height: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pokemon-image{
+    width: 25%;
+    height: 35%;
+}

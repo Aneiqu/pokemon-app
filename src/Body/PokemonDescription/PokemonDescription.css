@@ -1,0 +1,8 @@
+.description-container{
+    height: 20%;
+    width: 100%;
+    display: flex;
+}
+.pokemon-description{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
