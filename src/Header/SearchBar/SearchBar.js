@@ -11,7 +11,7 @@ export default function SearchBar( {returnPokemon} ){
             <input className="pokemon-searchbar" type="text" placeholder="Search..." value={inputValue} onChange={(e) => {
                 setInputValue(e.target.value)
             }}></input>
-            <button className='pokemon-search-button' onClick={() => returnPokemon(inputValue)}/>
+            <button className='pokemon-search-button' onClick={() => returnPokemon(inputValue.toLowerCase())}/>
         </div>
     )
 }
