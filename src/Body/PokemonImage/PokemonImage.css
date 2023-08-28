@@ -1,17 +1,17 @@
 .pokemon-image-container{
-    height: 60%;
+    height: 50%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .pokemon-image{
-    width: 25%;
-    height: 35%;
+    width: 35%;
+    height: 4g5%;
 }
 @media (max-width: 600px) {
     .pokemon-image{
-        width: 50%;
+        width: 45%;
         height: 35%;
     }
 }
