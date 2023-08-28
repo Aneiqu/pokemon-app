@@ -2,9 +2,11 @@ import './Body.css'
 import SearchBar from '../Header/SearchBar/SearchBar'
 import PokemonImage from './PokemonImage/PokemonImage'
 import PokemonDescription from './PokemonDescription/PokemonDescription'
+import 'react-toastify/dist/ReactToastify.css';
 import Footer from '../Footer/Footer'
 import axios from 'axios'
 import { useState } from 'react'
+import { toast } from 'react-toastify';
 
 export default function Body(){
     const [pokemonImage, setPokemonImage] = useState('')
@@ -22,14 +24,15 @@ export default function Body(){
                 if(!seenFlavorText[el.flavor_text]) {
                     seenFlavorText[el.flavor_text] = true
                     return true
-                }
+                }  
+          
                 return false
             })
             
             setPokemonDescription(noDuplicatesAndEngData)
             setCurrentDescPage(1)
         } catch(err) {
-            console.log(err + " ERROR");
+            toast.error("Pokemon not found !");
         }
     }
     return(
@@ -39,5 +42,6 @@ export default function Body(){
             <PokemonDescription description={pokemonDescription} currentPage={currentDescPage}/>
             <Footer pokemonData={pokemonDescription} currentPage={currentDescPage} setCurrentPage={setCurrentDescPage}/>   
         </div>
+        
     )
 }
