@@ -8,38 +8,36 @@ import { useState } from 'react'
 
 export default function Body(){
     const [pokemonImage, setPokemonImage] = useState('')
-    const [pokemonDescription, setPokemonDescription] = useState('')
+    const [pokemonDescription, setPokemonDescription] = useState([])
+    const [currentDescPage, setCurrentDescPage] = useState(0)
+
     const lookForPokemon = async function(pokemonName){
+        const seenFlavorText = {}
         try{
-            const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-            setPokemonImage(response.data.sprites.front_default);
-            const pokemonAbilities = response.data.abilities.map(e => e.ability.url)
-            abilitiesDescription(pokemonAbilities)
+            const pokemonDataResponse = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+            const pokemonDescriptionResponse = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`)
+            setPokemonImage(pokemonDataResponse.data.sprites.front_default);
+            
+            const noDuplicatesAndEngData = pokemonDescriptionResponse.data.flavor_text_entries.filter(el => el.language.name === "en").filter(el => {
+                if(!seenFlavorText[el.flavor_text]) {
+                    seenFlavorText[el.flavor_text] = true
+                    return true
+                }
+                return false
+            })
+            
+            setPokemonDescription(noDuplicatesAndEngData)
+            setCurrentDescPage(1)
         } catch(err) {
             console.log(err + " ERROR");
         }
     }
-    async function abilitiesDescription(pokemonAbilities){
-        try{
-            const response = await Promise.all(pokemonAbilities.map(
-                ability => {
-                    return axios.get(ability)
-                }))
-            const abilities = response.map(e => {
-                return e.data
-            })
-            setPokemonDescription(abilities)
-        } catch(err){
-            console.log(err);
-        }
-    } 
-
     return(
         <div className="body-container">
             <SearchBar returnPokemon={lookForPokemon}/>
             <PokemonImage pokemonImage={pokemonImage}/>
-            <PokemonDescription PokemonAbilities={pokemonDescription}/>
-            <Footer/>   
+            <PokemonDescription description={pokemonDescription} currentPage={currentDescPage}/>
+            <Footer pokemonData={pokemonDescription} currentPage={currentDescPage} setCurrentPage={setCurrentDescPage}/>   
         </div>
     )
 }

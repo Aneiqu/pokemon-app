@@ -1,14 +1,13 @@
 import './PokemonDescription.css'
 
-export default function PokemonDescription( { PokemonAbilities } ){
-    console.log(PokemonAbilities);
+export default function PokemonDescription(props){
     return(
         <div className="description-container">
-            <p className="pokemon-description">
-                <cite>
-                    {PokemonAbilities[0] ? PokemonAbilities[0].effect_entries.filter(e => e.language.name == 'en')[0].effect : 'Search a pokemon!'}
-                </cite>
-            </p>
+            <div className="pokemon-description">
+                <p>
+                    {props.description.length > 1 ? props.description[props.currentPage - 1].flavor_text : "Search a pokemon!"}
+                </p>
+            </div>
         </div>
     )
 }
