@@ -11,12 +11,31 @@
     border: 1px solid rgb(168, 168, 168);
     border-radius: 5rem;
     font-size: larger;
+    padding-left: 5%;
 }
 .pokemon-searchbar:focus{
     outline: none;
 }
 .pokemon-search-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid rgb(168, 168, 168);
+    border-radius: 5px;
     height: 50%;
     width: 8%;
     margin: 2%
+}
+.pokemon-search-button:active{
+    transition: .1s;
+    background-color: rgba(168, 168, 168, 0.671);;
+}
+@media (max-width: 600px) {
+    .pokemon-searchbar{
+        width: 70%;
+    }
+    .pokemon-search-button{
+        width: 12%;
+    }
 }

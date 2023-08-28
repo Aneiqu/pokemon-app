@@ -6,11 +6,17 @@
     justify-content: space-around;
 }
 .description-nav-button{
-    width: 15%;
+    width: 20%;
     text-align: center;
 }
 
 .description-page{
     width: 15%;
     text-align: center;
+}
+
+@media (max-width: 600px) {
+    .description-nav-button{
+    width: 20%
+    }
 }

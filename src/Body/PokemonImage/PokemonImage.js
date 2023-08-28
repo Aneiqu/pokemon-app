@@ -1,8 +1,5 @@
 import './PokemonImage.css'
 
-import { useState } from "react";
-
-
 export default function PokemonImage( {pokemonImage} ){
     return(
         <div className="pokemon-image-container">

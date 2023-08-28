@@ -9,3 +9,9 @@
     width: 25%;
     height: 35%;
 }
+@media (max-width: 600px) {
+    .pokemon-image{
+        width: 50%;
+        height: 35%;
+    }
+}
