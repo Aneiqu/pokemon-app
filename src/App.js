@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Body/>
-        <ToastContainer pauseOnHover={false}/>
+        <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false}/>
     </div>
   );
 }

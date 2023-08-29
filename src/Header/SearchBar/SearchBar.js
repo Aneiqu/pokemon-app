@@ -11,7 +11,7 @@ export default function SearchBar( {returnPokemon} ){
     //     // returnPokemon(inputValue.toLowerCase())
     // })
     function handleInput(button) {
-        if(!(button.key === "Enter") || !(button.key === "Return")) return
+        if(!(button.keyCode === 13)) return
         returnPokemon(inputValue.toLowerCase())
     }
 

@@ -15,7 +15,7 @@ export default function Body(){
 
     const lookForPokemon = async function(pokemonName){
         const seenFlavorText = {}
-        try{
+                try{     
             const pokemonDataResponse = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
             const pokemonDescriptionResponse = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`)
             setPokemonImage(pokemonDataResponse.data.sprites.front_default);
@@ -30,7 +30,7 @@ export default function Body(){
             })
             
             setPokemonDescription(noDuplicatesAndEngData)
-            setCurrentDescPage(1)
+            setCurrentDescPage(1)       
         } catch(err) {
             toast.error("Pokemon not found !");
         }
